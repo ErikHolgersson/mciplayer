@@ -31,5 +31,11 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedVideobutton();
+	afx_msg void OnBnClickedAudiobutton();
+	afx_msg void OnBnClickedVideoplaybutton();
+	afx_msg void OnBnClickedMidibutton();
+	afx_msg void OnBnClickedPlaybutton();
+	afx_msg void OnBnClickedPausebutton();
+	afx_msg void OnBnClickedStopbutton();
+	afx_msg void OnBnClickedExitbutton();
 };

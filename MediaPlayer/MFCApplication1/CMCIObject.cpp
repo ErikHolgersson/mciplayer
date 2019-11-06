@@ -191,3 +191,38 @@ bool CMCIObject::GetTMSFPosition(BYTE& track, BYTE& min, BYTE& sek, BYTE& frame)
 	}
 	return false; // don't count not supported media
 }
+
+bool CMCIObject::SetVideoPosition(HWND hwnd, CRect rect) {
+	MCI_ANIM_WINDOW_PARMS wparms;
+	MCI_ANIM_RECT_PARMS where;
+	wparms.hWnd = hwnd; // set destination window
+	if ((m_Result = mciSendCommand(m_op.wDeviceID,
+		MCI_WINDOW, MCI_ANIM_WINDOW_HWND, (DWORD_PTR)&wparms)) != 0) {
+		MCIError();
+		return false;
+	}
+	where.rc = rect; // set destination rect
+	if ((m_Result = mciSendCommand(m_op.wDeviceID,
+		MCI_PUT, MCI_ANIM_RECT | MCI_ANIM_PUT_DESTINATION,
+		(DWORD_PTR) & where)) != 0) {
+		MCIError();
+		return false;
+	}
+	return true;
+}
+
+bool CMCIObject::OpenAudioCD(LPCWSTR drive, BYTE& tracks) {
+	DWORD flag = 0;
+	if (m_op.wDeviceID != 0) Close();
+	m_op.lpstrDeviceType = (LPCWSTR)MCI_DEVTYPE_CD_AUDIO; //dirty!
+	if (m_op.lpstrElementName = drive)
+		flag = MCI_OPEN_ELEMENT;
+	if ((m_Result = mciSendCommand(0,
+		MCI_OPEN, MCI_OPEN_TYPE_ID | flag |
+		MCI_WAIT | MCI_OPEN_TYPE, (DWORD_PTR)&m_op)) != 0) {
+		MCIError();
+		return false;
+	}
+	// wird später hier erweitert
+	return true;
+}

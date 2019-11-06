@@ -12,6 +12,8 @@ public:
 	bool GetTMSFPosition(BYTE& track, BYTE& min, BYTE& sek, BYTE& frame);
 	bool GetTrackLength(BYTE track, BYTE& min, BYTE& sek, BYTE& frame);
 	bool TMSFSeek(BYTE track, BYTE min, BYTE sek, BYTE frame);
+	bool SetVideoPosition(HWND hwnd, CRect rect);
+	bool CMCIObject::OpenAudioCD(LPCWSTR drive, BYTE& tracks);
 private:
 	void MCIError();
 	MCI_OPEN_PARMS m_op;

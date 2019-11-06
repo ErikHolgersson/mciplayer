@@ -57,7 +57,7 @@ BEGIN
     "#include ""res\\MFCApplication1.rc2""  // Nicht mit Microsoft Visual C++ bearbeitete Ressourcen\r\n"
     "#include ""l.DEU\\afxres.rc""      // Standardkomponenten\r\n"
     "#if !defined(_AFXDLL)\r\n"
-    "#include ""l.DEU\\afxribbon.rc""   // Ressourcen fÃ¼r MFC-MenÃ¼band und -Steuerleiste\r\n"
+    "#include ""l.DEU\\afxribbon.rc""   // Ressourcen fÃƒÆ’Ã‚Â¼r MFC-MenÃƒÆ’Ã‚Â¼band und -Steuerleiste\r\n"
     "#endif\r\n"
     "#endif\r\n"
     "\0"
@@ -86,11 +86,14 @@ STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    PUSHBUTTON      "Audio",IDC_VIDEOBUTTON,348,7,50,46
+    PUSHBUTTON      "Audio",IDC_AUDIOBUTTON,348,7,50,46
     PUSHBUTTON      "VIDEO",VIDEOPLAYBUTTON,294,7,50,46
     PUSHBUTTON      "Midi",MIDIBUTTON,239,7,50,46
     PUSHBUTTON      "CD",CDBUTTON,181,7,50,46
     PUSHBUTTON      "E X I T",EXITBUTTON,7,223,391,23
+    PUSHBUTTON      "Play",IDC_PLAYBUTTON,7,199,50,14
+    PUSHBUTTON      "Pause",IDC_PAUSEBUTTON,61,199,50,14
+    PUSHBUTTON      "Stop",IDC_STOPBUTTON,115,199,50,14
 END
 
 
@@ -159,7 +162,15 @@ END
 
 IDD_MFCAPPLICATION1_DIALOG AFX_DIALOG_LAYOUT
 BEGIN
-    0
+    0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 100,
+    0, 0, 0, 0,
+    0, 0, 0, 0
 END
 
 #endif    // Deutsch (Deutschland) resources
@@ -182,7 +193,7 @@ LANGUAGE 7, 1
 #include "res\MFCApplication1.rc2"  // Nicht mit Microsoft Visual C++ bearbeitete Ressourcen
 #include "l.DEU\afxres.rc"      // Standardkomponenten
 #if !defined(_AFXDLL)
-#include "l.DEU\afxribbon.rc"   // Ressourcen fÃ¼r MFC-MenÃ¼band und -Steuerleiste
+#include "l.DEU\afxribbon.rc"   // Ressourcen fÃƒÂ¼r MFC-MenÃƒÂ¼band und -Steuerleiste
 #endif
 #endif
 

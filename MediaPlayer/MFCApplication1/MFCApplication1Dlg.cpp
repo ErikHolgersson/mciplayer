@@ -30,7 +30,13 @@ void CMFCApplication1Dlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_VIDEOBUTTON, &CMFCApplication1Dlg::OnBnClickedVideobutton)
+	ON_BN_CLICKED(IDC_AUDIOBUTTON, &CMFCApplication1Dlg::OnBnClickedAudiobutton)
+	ON_BN_CLICKED(VIDEOPLAYBUTTON, &CMFCApplication1Dlg::OnBnClickedVideoplaybutton)
+	ON_BN_CLICKED(MIDIBUTTON, &CMFCApplication1Dlg::OnBnClickedMidibutton)
+	ON_BN_CLICKED(IDC_PLAYBUTTON, &CMFCApplication1Dlg::OnBnClickedPlaybutton)
+	ON_BN_CLICKED(IDC_PAUSEBUTTON, &CMFCApplication1Dlg::OnBnClickedPausebutton)
+	ON_BN_CLICKED(IDC_STOPBUTTON, &CMFCApplication1Dlg::OnBnClickedStopbutton)
+	ON_BN_CLICKED(EXITBUTTON, &CMFCApplication1Dlg::OnBnClickedExitbutton)
 END_MESSAGE_MAP()
 
 
@@ -93,4 +99,44 @@ void CMFCApplication1Dlg::OnBnClickedAudiobutton()
 	// TODO: Fügen Sie hier Ihren Handlercode für Benachrichtigungen des Steuerelements ein.
 	mci.OpenFile(L"maus_castor_stereo.mp3");
 	mci.Play();
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedVideoplaybutton()
+{
+	mci.OpenFile(L"test.mpeg");
+	mci.SetVideoPosition(GetSafeHwnd(), CRect(15, 95, 320, 240));
+	mci.Play();
+
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedMidibutton()
+{
+	mci.OpenFile(L"canyon.mid");
+	mci.Play();
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedPlaybutton()
+{
+	mci.Play();
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedPausebutton()
+{
+	mci.Pause();
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedStopbutton()
+{
+	mci.Close();
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedExitbutton()
+{
+	DestroyWindow();
 }
